@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectorMatcher } from '@angular/compiler';
+import { IGrocery, Grocery } from 'src/interfaces/grocery';
+
 
 @Component({
   selector: 'app-grocery-list',
@@ -8,10 +10,21 @@ import { SelectorMatcher } from '@angular/compiler';
 })
 export class GroceryListComponent implements OnInit 
 {
-  filter: string = 'search';
+  _listFilter: string;
+  get ListFilter(): string
+  {
+    return this._listFilter;
+  }
+  set ListFilter(value: string){
+    this._listFilter = value;
+    //if there is a filter value, perform filter
+    this.filteredGroceries = this.ListFilter ? this.performFilter(this.ListFilter): this.groceries;
+  }
   imageWidth: number = 50;
   imageMargin: number = 2;
-  groceries: any[] =
+  filteredGroceries: IGrocery[];
+  cartGroceries: IGrocery[];
+  groceries: IGrocery[] =
   [
     {
       "groceryName": "potato",
@@ -23,12 +36,27 @@ export class GroceryListComponent implements OnInit
 ];
   addToCart(): void 
   {
-
+    
+  }
+  performFilter(listFilter: string): IGrocery[]
+  {
+    listFilter = listFilter.toLocaleLowerCase();
+    //using the array filter method
+    //for each grocery in IGrocery =>
+    //indexOf method to check each groceryName to match filter
+    return this.groceries.filter((grocery: IGrocery) =>
+    grocery.groceryName.toLocaleLowerCase().indexOf(listFilter) !==-1);
   }
 
-  constructor() { }
+  constructor() 
+  { 
+    this.filteredGroceries = this.groceries;
+    
+  }
 
-  ngOnInit() {
+  ngOnInit(): void 
+  {
+
   }
 
 }
