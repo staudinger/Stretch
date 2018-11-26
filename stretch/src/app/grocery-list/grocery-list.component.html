@@ -6,9 +6,8 @@
     <div class='row'>
       <div class='col-md-2'>Search:</div>
       <div class='col-md-4'>
-        <input type='text'/>
-        <!--<input type='text'
-               [(ngModel)]='listFilter' />-->
+        <input type='text'
+               [(ngModel)]='filter' />
       </div>
     </div>
     <div class = 'table-responsive'>
@@ -17,12 +16,24 @@
         *ngIf='groceries && groceries.length'>
         <thead>
           <tr>
+            <th></th>
             <th>Item</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor = 'let grocery of groceries'>
+            <td>
+              <button class='btn btn-primary'>
+                add to cart
+              </button>
+            </td>
             <td>{{grocery.groceryName}}</td>
+            <td>
+              <img src = {{grocery.imageUrl}}
+              style.width.px = {{imageWidth}}
+              style.margin.px = {{imageMargin}}>
+            </td>
           </tr>
         </tbody>
       </table>
