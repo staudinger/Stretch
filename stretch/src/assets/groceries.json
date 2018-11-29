@@ -1,8 +1,10 @@
 [
-    {
-      "groceryName": "potato"
-    },
-    {
-      "groceryName": "tomato"
-    }
+  {
+    "groceryName": "potato",
+    "imageUrl": "https://openclipart.org/image/100px/svg_to_png/209652/food-potato.png"    
+  },
+  {
+    "groceryName": "tomato",
+    "imageUrl": "https://openclipart.org/image/100px/svg_to_png/177512/tomate.png"
+  }
 ]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectorMatcher } from '@angular/compiler';
 import { IGrocery, Grocery } from 'src/interfaces/grocery';
+import { GroceryService } from '../grocery.service';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { IGrocery, Grocery } from 'src/interfaces/grocery';
 })
 export class GroceryListComponent implements OnInit 
 {
+  errorMessage: string;
+
   _listFilter: string;
   get ListFilter(): string
   {
@@ -35,22 +38,15 @@ export class GroceryListComponent implements OnInit
   imageMargin: number = 2;
   filteredGroceries: IGrocery[];
   filteredCart: IGrocery[];
-  cart: IGrocery[] = 
+  cart: IGrocery[] =
   [{
     "groceryName": "potato",
     "imageUrl": "https://openclipart.org/image/100px/svg_to_png/209652/food-potato.png"    
   }];
   groceries: IGrocery[] =
-  [
-    {
-      "groceryName": "potato",
-      "imageUrl": "https://openclipart.org/image/100px/svg_to_png/209652/food-potato.png"    
-    },
-    {
-      "groceryName": "tomato",
-      "imageUrl": "https://openclipart.org/image/100px/svg_to_png/177512/tomate.png"
-    }
-];
+    [
+
+    ];
 
   performFilter(listFilter: string, groceries: IGrocery[]): IGrocery[]
   {
@@ -74,16 +70,26 @@ export class GroceryListComponent implements OnInit
     }
   }
 
-  constructor() 
+  constructor(private groceryService: GroceryService) 
   { 
-    this.filteredGroceries = this.groceries;
-    this.filteredCart = this.cart;
     
   }
 
   ngOnInit(): void 
   {
-
+    this.groceryService.getGroceries().subscribe
+    (
+      //returned data (groceries) is initialized to local groceries array.
+      groceries => 
+      {
+        this.groceries = groceries;
+        this.filteredGroceries = this.groceries;
+      },
+      //casting error to any data type
+      error => this.errorMessage = <any>error
+    );
+    this.filteredGroceries = this.groceries;
+    this.filteredCart = this.cart
   }
 
 }
