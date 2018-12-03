@@ -30,7 +30,9 @@
                 add to cart
               </button>
             </td>
-            <td>{{grocery.groceryName}}</td>
+            <td><a [routerLink] = "['/groceries', grocery.groceryName]">
+              {{grocery.groceryName}}
+            </a></td>
             <td>
               <img src = {{grocery.imageUrl}}
               style.width.px = {{imageWidth}}
