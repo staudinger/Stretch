@@ -1,3 +1,8 @@
-<div>
-  <app-grocery-list></app-grocery-list>
-</div>
+<nav class='navbar navbar-expand navbar-ight bg-light'>
+  <a class='navbar-brand'>Stretch</a>
+  <ul class='nav nav-pills'>
+    <li><a class='nav-link' [routerLink] = "['groceries']">Grocery List</a></li>
+    <li><a class='nav-link'>Cart</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
