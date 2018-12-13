@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IGrocery } from 'src/interfaces/grocery';
+import { Grocery } from 'src/app/grocery';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -11,10 +11,10 @@ export class GroceryService
 {
   private groceryUrl =  '../assets/groceries.json';
   //Returns asynchronous data  (observable)
-  getGroceries(): Observable<IGrocery[]>
+  getGroceries(): Observable<Grocery[]>
   {
     //expecting an array of IGrocery objects
-    return this.http.get<IGrocery[]>(this.groceryUrl).pipe
+    return this.http.get<Grocery[]>(this.groceryUrl).pipe
     (
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)

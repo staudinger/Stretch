@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectorMatcher } from '@angular/compiler';
-import { IGrocery, Grocery } from 'src/interfaces/grocery';
+import { Grocery } from 'src/app/grocery';
 import { GroceryService } from '../grocery.service';
 
 
@@ -36,32 +36,29 @@ export class GroceryListComponent implements OnInit
   }
   imageWidth: number = 50;
   imageMargin: number = 2;
-  filteredGroceries: IGrocery[];
-  filteredCart: IGrocery[];
-  cart: IGrocery[] =
-  [{
-    "groceryName": "potato",
-    "imageUrl": "https://openclipart.org/image/100px/svg_to_png/209652/food-potato.png"    
-  }];
-  groceries: IGrocery[] =
+  filteredGroceries: Grocery[];
+  filteredCart: Grocery[];
+  cart: Grocery[] =
+  [];
+  groceries: Grocery[] =
     [
 
     ];
 
-  performFilter(listFilter: string, groceries: IGrocery[]): IGrocery[]
+  performFilter(listFilter: string, groceries: Grocery[]): Grocery[]
   {
     listFilter = listFilter.toLocaleLowerCase();
     //using the array filter method
     //for each grocery of type IGrocery in groceries =>
     //indexOf method to check each groceryName to match filter
-    return this.groceries.filter((grocery: IGrocery) =>
+    return this.groceries.filter((grocery: Grocery) =>
     grocery.groceryName.toLocaleLowerCase().indexOf(listFilter) !==-1);
   }
-  addToCart(grocery: IGrocery): void
+  addToCart(grocery: Grocery): void
   {
       this.cart.push(grocery);
   }
-  removeFromCart(grocery: IGrocery): void
+  removeFromCart(grocery: Grocery): void
   {
     var index = this.cart.indexOf(grocery);
     if(index !== -1)
@@ -80,9 +77,9 @@ export class GroceryListComponent implements OnInit
     this.groceryService.getGroceries().subscribe
     (
       //returned data (groceries) is initialized to local groceries array.
-      groceries => 
+      serviceGroceries => 
       {
-        this.groceries = groceries;
+        this.groceries = serviceGroceries;
         this.filteredGroceries = this.groceries;
       },
       //casting error to any data type

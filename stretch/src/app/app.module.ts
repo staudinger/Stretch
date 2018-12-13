@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { GroceryListComponent } from './groceries/grocery-list/grocery-list.component';
 import { GroceryDetailComponent } from './groceries/grocery-detail/grocery-detail.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule
 ({
@@ -14,7 +15,8 @@ import { GroceryDetailComponent } from './groceries/grocery-detail/grocery-detai
   [
     AppComponent,
     GroceryListComponent,
-    GroceryDetailComponent
+    GroceryDetailComponent,
+    CartComponent
   ],
   imports: 
   [
@@ -25,6 +27,7 @@ import { GroceryDetailComponent } from './groceries/grocery-detail/grocery-detai
     ([
       {path: 'groceries', component: GroceryListComponent },
       {path: 'groceries/:name', component: GroceryDetailComponent },
+      {path: 'cart', component: CartComponent },
       {path: '', redirectTo: 'groceries', pathMatch: 'full'},
       {path: '**', redirectTo: 'products', pathMatch: 'full'}
     ])

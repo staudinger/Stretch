@@ -1,0 +1,44 @@
+<div class='card'>
+    <div class='card-header'>
+      Cart
+    </div>
+    <div class='card-body'>
+      <div class='row'>
+        <div class='col-md-2'>Search:</div>
+        <div class='col-md-4'>
+          <!--sets ListFilter to user input-->
+          <input type='text'
+                 [(ngModel)]='CartFilter' />
+        </div>
+      </div>
+      <div class = 'table-responsive'>
+        <!--displays products only if there is a products properties and its array has elements-->
+        <table class='table'
+          *ngIf='groceries && groceries.length'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Item</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = 'let grocery of filteredCart'>
+              <td>
+                <button class='btn btn-danger'
+                (click) = 'removeFromCart(this.grocery)'>
+                  remove
+                </button>
+              </td>
+              <td>{{grocery.groceryName}}</td>
+              <td>
+                <img src = {{grocery.imageUrl}}
+                style.width.px = {{imageWidth}}
+                style.margin.px = {{imageMargin}}>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

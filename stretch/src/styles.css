@@ -2,11 +2,14 @@
 div.card-header {
     font-size: large;
    }
-   
-   div.card {
+div.card {
      margin-top: 10px
    }
-   
-   .table {
+.table {
      margin-top: 10px
    }
+
+thead
+{
+    color: #337AB7
+}

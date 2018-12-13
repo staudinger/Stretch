@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
-import { IGrocery } from 'src/interfaces/grocery';
+import { Grocery } from 'src/app/grocery';
 import { GroceryService } from '../grocery.service';
 import { filter } from 'rxjs/operators';
 
@@ -12,9 +12,9 @@ import { filter } from 'rxjs/operators';
 export class GroceryDetailComponent implements OnInit {
   imageWidth: number = 50;
   imageMargin: number = 2;
-  groceries: IGrocery[] = [];
-  filteredGrocery: IGrocery[] = [];
-  grocery: IGrocery;
+  groceries: Grocery[] = [];
+  filteredGrocery: Grocery[] = [];
+  grocery: Grocery;
   name: string;
   errorMessage: string;
   constructor(private groceryService: GroceryService, private route: ActivatedRoute, private router: Router) {
@@ -32,10 +32,10 @@ export class GroceryDetailComponent implements OnInit {
     this.groceryService.getGroceries().subscribe
     (
       //returned data (groceries) is initialized to local groceries array.
-      groceries => 
+      serviceGroceries => 
       {
         
-        this.groceries = groceries;
+        this.groceries = serviceGroceries;
         this.grocery = this.groceries.find(x=>x.groceryName == this.name);
       }
 
