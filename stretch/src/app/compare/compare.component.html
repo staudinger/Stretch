@@ -1,3 +1,33 @@
-<p>
-  compare works!
-</p>
+<div class='card' *ngIf ='cart'>
+  <div class='card-header'>
+    Comparison
+  </div>
+  <div class = 'table-responsive'>
+      <table class='table'>
+  <thead>
+    <tr>
+      <th>Aldi</th>
+      <th>Publix</th>
+      <th>Trader Joe's</th>
+      <th>Walmart</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        {{aldiTotal}}
+      </td>
+      <td>
+        {{publixTotal}}
+      </td>
+      <td>
+        {{traderJoesTotal}}
+      </td>
+      <td>
+        {{walmartTotal}}
+      </td>
+    </tr>
+  </tbody>
+      </table>
+  </div>
+</div>
