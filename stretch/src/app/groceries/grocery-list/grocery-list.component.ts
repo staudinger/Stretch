@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectorMatcher } from '@angular/compiler';
 import { Grocery } from 'src/app/grocery';
 import { GroceryService } from '../grocery.service';
+import { CartService } from '../../cart/cart.service';
 
 
 @Component({
@@ -24,22 +25,12 @@ export class GroceryListComponent implements OnInit
     this.filteredGroceries = this.ListFilter ? this.performFilter(this.ListFilter, this.groceries): this.groceries;
   }
 
-  _cartFilter: string;
-  get CartFilter(): string
-  {
-    return this._cartFilter;
-  }
-  set CartFilter(value: string){
-    this._cartFilter = value;
-    //if there is a filter value, perform filter
-    this.filteredCart = this.CartFilter ? this.performFilter(this.CartFilter, this.cart): this.cart;
-  }
   imageWidth: number = 50;
   imageMargin: number = 2;
   filteredGroceries: Grocery[];
-  filteredCart: Grocery[];
   cart: Grocery[] =
   [];
+
   groceries: Grocery[] =
     [
 
@@ -51,23 +42,18 @@ export class GroceryListComponent implements OnInit
     //using the array filter method
     //for each grocery of type IGrocery in groceries =>
     //indexOf method to check each groceryName to match filter
-    return this.groceries.filter((grocery: Grocery) =>
+    return groceries.filter((grocery: Grocery) =>
     grocery.groceryName.toLocaleLowerCase().indexOf(listFilter) !==-1);
   }
   addToCart(grocery: Grocery): void
   {
+      this.cart = this.cartService.getCart();
       this.cart.push(grocery);
-  }
-  removeFromCart(grocery: Grocery): void
-  {
-    var index = this.cart.indexOf(grocery);
-    if(index !== -1)
-    {
-      this.cart.splice(index, 1);
-    }
+      this.cartService.setCart(this.cart);
   }
 
-  constructor(private groceryService: GroceryService) 
+
+  constructor(private groceryService: GroceryService, private cartService: CartService) 
   { 
     
   }
@@ -85,8 +71,6 @@ export class GroceryListComponent implements OnInit
       //casting error to any data type
       error => this.errorMessage = <any>error
     );
-    this.filteredGroceries = this.groceries;
-    this.filteredCart = this.cart
   }
 
 }

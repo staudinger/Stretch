@@ -4,17 +4,11 @@
     </div>
     <div class='card-body'>
       <div class='row'>
-        <div class='col-md-2'>Search:</div>
-        <div class='col-md-4'>
-          <!--sets ListFilter to user input-->
-          <input type='text'
-                 [(ngModel)]='CartFilter' />
-        </div>
       </div>
       <div class = 'table-responsive'>
         <!--displays products only if there is a products properties and its array has elements-->
         <table class='table'
-          *ngIf='groceries && groceries.length'>
+          *ngIf='cart && cart.length'>
           <thead>
             <tr>
               <th></th>
@@ -23,7 +17,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor = 'let grocery of filteredCart'>
+            <tr *ngFor = 'let grocery of cart'>
               <td>
                 <button class='btn btn-danger'
                 (click) = 'removeFromCart(this.grocery)'>
