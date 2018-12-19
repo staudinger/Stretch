@@ -9,6 +9,7 @@ import { GroceryListComponent } from './groceries/grocery-list/grocery-list.comp
 import { GroceryDetailComponent } from './groceries/grocery-detail/grocery-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { CompareComponent } from './compare/compare.component';
+import { GroceryFormComponent } from './groceries/grocery-form/grocery-form.component';
 
 @NgModule
 ({
@@ -18,7 +19,8 @@ import { CompareComponent } from './compare/compare.component';
     GroceryListComponent,
     GroceryDetailComponent,
     CartComponent,
-    CompareComponent
+    CompareComponent,
+    GroceryFormComponent
   ],
   imports: 
   [
@@ -31,6 +33,7 @@ import { CompareComponent } from './compare/compare.component';
       {path: 'groceries/:name', component: GroceryDetailComponent },
       {path: 'cart', component: CartComponent },
       {path: 'compare', component: CompareComponent},
+      {path: 'new-grocery', component: GroceryFormComponent},
       {path: '', redirectTo: 'groceries', pathMatch: 'full'},
       {path: '**', redirectTo: 'products', pathMatch: 'full'}
     ])

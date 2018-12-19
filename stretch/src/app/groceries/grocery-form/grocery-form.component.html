@@ -1,0 +1,28 @@
+<div class="container">
+  <h3>New Grocery</h3>
+  <form #form="ngForm" novalidate>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" step="0.01" class="form-control" required name="groceryName" 
+          [(ngModel)] ="grocery.groceryName"
+          (ngModelChange)="grocery.groceryName=$event">
+
+      <label>Aldi price</label>
+      <input type="number" step="0.01" class="form-control" required name="groceryName" 
+          [(ngModel)] ="grocery.aldiPrice">
+
+      <label>Publix Price</label>
+      <input type="number" class="form-control" required name="groceryName" 
+          [(ngModel)] ="grocery.publixPrice">
+          
+      <label>Trader Joe's Price</label>
+      <input type="number" step="0.01" class="form-control" required name="groceryName" 
+          [(ngModel)] ="grocery.traderJoesPrice">
+
+      <label>Walmart Price</label>
+      <input type="number" step="0.01" class="form-control" required name="groceryName" 
+          [(ngModel)] ="grocery.walmartPrice">
+    </div>
+    <button class="btn btn-primary" type="submit">Ok</button>
+  </form>
+</div>>
