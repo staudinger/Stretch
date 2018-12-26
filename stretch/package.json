@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "json-server": "json-server --watch groceries.json"
   },
   "private": true,
   "dependencies": {
@@ -49,4 +50,5 @@
     "tslint": "~5.11.0",
     "typescript": "~2.9.2"
   }
+
 }

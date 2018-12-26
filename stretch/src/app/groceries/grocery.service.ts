@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Grocery } from 'src/app/grocery';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroceryService 
 {
-  private groceryUrl =  '../assets/groceries.json';
+  private httpOptions = {
+    headers: new HttpHeaders(
+      {
+        'Content-Type': 'application/json'
+      }
+    )
+  };
+  private groceryUrl =  'http://localhost:3000/Groceries';
   //Returns asynchronous data  (observable)
+
   getGroceries(): Observable<Grocery[]>
   {
     //expecting an array of IGrocery objects
@@ -19,7 +27,18 @@ export class GroceryService
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
-    
+  }
+
+  addGrocery (grocery: Grocery): Observable<Grocery> 
+  {
+    return this.http.post<Grocery>(this.groceryUrl, grocery, this.httpOptions)
+     .pipe(catchError(this.handleError));
+  }
+
+  updateGrocery (grocery: Grocery): Observable<Grocery> 
+  {
+    return this.http.put<Grocery>(this.groceryUrl, grocery)
+    .pipe(catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse) 

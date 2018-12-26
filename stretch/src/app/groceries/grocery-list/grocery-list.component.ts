@@ -27,6 +27,7 @@ export class GroceryListComponent implements OnInit
 
   imageWidth: number = 50;
   imageMargin: number = 2;
+  
   filteredGroceries: Grocery[];
   cart: Grocery[] =
   [];

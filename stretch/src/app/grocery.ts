@@ -1,17 +1,17 @@
 export class Grocery 
-{
-    constructor
-    (
-        public groceryName: string,
-        public imageUrl: string,
-        public publixPrice: number,
-        public aldiPrice: number,
-        public traderJoesPrice: number,
-        public walmartPrice: number
-
-    )
+{ 
+    groceryName: string;
+    imageUrl: string;
+    publixPrice: number;
+    aldiPrice: number;
+    traderJoesPrice: number;
+    walmartPrice: number;
+    constructor(values: Object = {}) 
     {
-
+            Object.assign(this, values);
     }
+    
+
+    
 
 }

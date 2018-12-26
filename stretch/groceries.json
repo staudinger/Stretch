@@ -1,0 +1,19 @@
+{
+"Groceries":[
+  {
+    "groceryName": "potato",
+    "imageUrl": "https://openclipart.org/image/100px/svg_to_png/209652/food-potato.png",
+    "aldiPrice": 9.99,
+    "publixPrice": 9.99,
+    "traderJoesPrice": 9.99,
+    "walmartPrice": 9.99
+  },
+  {
+    "groceryName": "tomato",
+    "imageUrl": "https://openclipart.org/image/100px/svg_to_png/177512/tomate.png",
+    "aldiPrice": 9.99,
+    "publixPrice": 9.99,
+    "traderJoesPrice": 9.99,
+    "walmartPrice": 9.99
+  }
+]}
