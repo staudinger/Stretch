@@ -18,7 +18,7 @@ export class GroceryDetailComponent implements OnInit {
   name: string;
   errorMessage: string;
   constructor(private groceryService: GroceryService, private route: ActivatedRoute, private router: Router) {
-    this.grocery = this.groceries.filter(x=>x.groceryName == name)[0];
+    this.grocery = this.groceries.filter(x=>x.id == name)[0];
     
   }
 
@@ -36,7 +36,7 @@ export class GroceryDetailComponent implements OnInit {
       {
         
         this.groceries = serviceGroceries;
-        this.grocery = this.groceries.find(x=>x.groceryName == this.name);
+        this.grocery = this.groceries.find(x=>x.id == this.name);
       }
 
     );

@@ -1,6 +1,6 @@
 export class Grocery 
 { 
-    groceryName: string;
+    id: string;
     imageUrl: string;
     publixPrice: number;
     aldiPrice: number;

@@ -44,7 +44,7 @@ export class GroceryListComponent implements OnInit
     //for each grocery of type IGrocery in groceries =>
     //indexOf method to check each groceryName to match filter
     return groceries.filter((grocery: Grocery) =>
-    grocery.groceryName.toLocaleLowerCase().indexOf(listFilter) !==-1);
+    grocery.id.toLocaleLowerCase().indexOf(listFilter) !==-1);
   }
   addToCart(grocery: Grocery): void
   {
