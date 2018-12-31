@@ -2,24 +2,25 @@
   <h3>New Grocery</h3>
   <form #form="ngForm" novalidate>
     <div class="form-group">
+      
       <label>Name</label>
-      <input type="text" step="0.01" class="form-control" required name="id" 
+      <input type="text" step="0.01" class="form-control" required name="id" placeholder="grocery name"
           [(ngModel)] ="grocery.id">
 
       <label>Aldi price</label>
-      <input type="number" step="0.01" class="form-control" required name="id" 
+      <input type="number" step="0.01" class="form-control" required name="id" placeholder="0.00"
           [(ngModel)] ="grocery.aldiPrice">
 
       <label>Publix Price</label>
-      <input type="number" class="form-control" required name="id" 
+      <input type="number" step="0.01" class="form-control" required name="id" placeholder="0.00"
           [(ngModel)] ="grocery.publixPrice">
           
       <label>Trader Joe's Price</label>
-      <input type="number" step="0.01" class="form-control" required name="id" 
+      <input type="number" step="0.01" class="form-control" required name="id" placeholder="0.00"
           [(ngModel)] ="grocery.traderJoesPrice">
 
       <label>Walmart Price</label>
-      <input type="number" step="0.01" class="form-control" required name="id" 
+      <input type="number" step="0.01" class="form-control" required name="id" placeholder="0.00"
           [(ngModel)] ="grocery.walmartPrice">
     </div>
     <button class="btn btn-primary" (click) = 'clickOk()' type="submit">Ok</button>

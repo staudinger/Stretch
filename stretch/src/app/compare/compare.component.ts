@@ -8,9 +8,10 @@ import { Grocery } from '../grocery';
   styleUrls: ['./compare.component.css']
 })
 export class CompareComponent implements OnInit { 
+
   cart: Grocery[] = this.cartService.getCart();
   
-  addWalmartTotal(cart:Grocery[]): number
+  addWalmartPrices(cart:Grocery[]): number
   {
    var total = 0;
    for(let grocery of cart)
@@ -19,7 +20,7 @@ export class CompareComponent implements OnInit {
    }
    return total;
   }
-  addAldiTotal(cart:Grocery[]): number
+  addAldiPrices(cart:Grocery[]): number
   {
    var total = 0;
    for(let grocery of cart)
@@ -28,7 +29,7 @@ export class CompareComponent implements OnInit {
    }
    return total;
   }
-  addTraderJoesTotal(cart:Grocery[]): number
+  addTraderJoesPrices(cart:Grocery[]): number
   {
    var total = 0;
    for(let grocery of cart)
@@ -37,7 +38,7 @@ export class CompareComponent implements OnInit {
    }
    return total;
   }
-  addPublixTotal(cart:Grocery[]): number
+  addPublixPrices(cart:Grocery[]): number
   {
    var total = 0;
    for(let grocery of cart)
@@ -48,10 +49,10 @@ export class CompareComponent implements OnInit {
   }
 
 
-  walmartTotal: number = this.addWalmartTotal(this.cart);
-  aldiTotal: number = this.addAldiTotal(this.cart);
-  traderJoesTotal: number = this.addTraderJoesTotal(this.cart);
-  publixTotal: number = this.addPublixTotal(this.cart);
+  walmartTotal: number = this.addWalmartPrices(this.cart);
+  aldiTotal: number = this.addAldiPrices(this.cart);
+  traderJoesTotal: number = this.addTraderJoesPrices(this.cart);
+  publixTotal: number = this.addPublixPrices(this.cart);
 
   
 

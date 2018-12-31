@@ -3,31 +3,31 @@
     Comparison
   </div>
   <div class = 'table-responsive'>
-      <table class='table'>
-  <thead>
-    <tr>
-      <th>Aldi</th>
-      <th>Publix</th>
-      <th>Trader Joe's</th>
-      <th>Walmart</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        {{aldiTotal}}
-      </td>
-      <td>
-        {{publixTotal}}
-      </td>
-      <td>
-        {{traderJoesTotal}}
-      </td>
-      <td>
-        {{walmartTotal}}
-      </td>
-    </tr>
-  </tbody>
-      </table>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Aldi</th>
+          <th>Publix</th>
+          <th>Trader Joe's</th>
+          <th>Walmart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {{aldiTotal | currency:'USD':'symbol':'1.2-2' }}
+          </td>
+          <td>
+            {{publixTotal | currency:'USD':'symbol':'1.2-2' }}
+          </td>
+          <td>
+            {{traderJoesTotal | currency:'USD':'symbol':'1.2-2' }}
+          </td>
+          <td>
+            {{walmartTotal | currency:'USD':'symbol':'1.2-2' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

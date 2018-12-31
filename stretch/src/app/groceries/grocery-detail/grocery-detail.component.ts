@@ -10,16 +10,22 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./grocery-detail.component.css']
 })
 export class GroceryDetailComponent implements OnInit {
+
   imageWidth: number = 50;
   imageMargin: number = 2;
+
   groceries: Grocery[] = [];
-  filteredGrocery: Grocery[] = [];
+  filteredGroceries: Grocery[] = [];
+
   grocery: Grocery;
-  name: string;
+
+  groceryName: string;
+
   errorMessage: string;
-  constructor(private groceryService: GroceryService, private route: ActivatedRoute, private router: Router) {
-    this.grocery = this.groceries.filter(x=>x.id == name)[0];
-    
+
+  constructor(private groceryService: GroceryService, private route: ActivatedRoute, private router: Router) 
+  {
+
   }
 
   clickBack():void{
@@ -28,17 +34,16 @@ export class GroceryDetailComponent implements OnInit {
 
   ngOnInit() 
   {
-    this.name = this.route.snapshot.paramMap.get('name');
-    this.groceryService.getGroceries().subscribe
-    (
-      //returned data (groceries) is initialized to local groceries array.
+    this.groceryName = this.route.snapshot.paramMap.get('name');
+
+    this.groceryService.getGroceries().subscribe(
+
+      //returned data (serviceGroceries) is initialized to local groceries array.
       serviceGroceries => 
       {
         
         this.groceries = serviceGroceries;
-        this.grocery = this.groceries.find(x=>x.id == this.name);
-      }
-
-    );
+        this.grocery = this.groceries.find(x=>x.id == this.groceryName);
+      });
   }
 }

@@ -17,11 +17,11 @@ export class GroceryService
     )
   };
   private groceryUrl =  'http://localhost:3000/Groceries';
-  //Returns asynchronous data  (observable)
 
+  //Returns asynchronous data  (observable)
   getGroceries(): Observable<Grocery[]>
   {
-    //expecting an array of IGrocery objects
+    //expecting an array of Grocery objects
     return this.http.get<Grocery[]>(this.groceryUrl).pipe
     (
       tap(data => console.log('All: ' + JSON.stringify(data))),

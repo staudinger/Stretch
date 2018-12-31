@@ -12,30 +12,26 @@ import { CartService } from '../../cart/cart.service';
 })
 export class GroceryListComponent implements OnInit 
 {
+  imageWidth: number = 50;
+  imageMargin: number = 2;
+
   errorMessage: string;
 
   _listFilter: string;
+
   get ListFilter(): string
   {
     return this._listFilter;
   }
   set ListFilter(value: string){
     this._listFilter = value;
-    //if there is a filter value, perform filter
+    //if listFilter is initialized, perform filter
     this.filteredGroceries = this.ListFilter ? this.performFilter(this.ListFilter, this.groceries): this.groceries;
   }
 
-  imageWidth: number = 50;
-  imageMargin: number = 2;
-  
   filteredGroceries: Grocery[];
-  cart: Grocery[] =
-  [];
-
-  groceries: Grocery[] =
-    [
-
-    ];
+  cart: Grocery[] = [];
+  groceries: Grocery[] = [];
 
   performFilter(listFilter: string, groceries: Grocery[]): Grocery[]
   {
@@ -46,6 +42,7 @@ export class GroceryListComponent implements OnInit
     return groceries.filter((grocery: Grocery) =>
     grocery.id.toLocaleLowerCase().indexOf(listFilter) !==-1);
   }
+
   addToCart(grocery: Grocery): void
   {
       this.cart = this.cartService.getCart();
@@ -63,7 +60,7 @@ export class GroceryListComponent implements OnInit
   {
     this.groceryService.getGroceries().subscribe
     (
-      //returned data (groceries) is initialized to local groceries array.
+      //returned data (serviceGroceries) is used to initialize local groceries array.
       serviceGroceries => 
       {
         this.groceries = serviceGroceries;
@@ -73,5 +70,4 @@ export class GroceryListComponent implements OnInit
       error => this.errorMessage = <any>error
     );
   }
-
 }

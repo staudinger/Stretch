@@ -15,6 +15,22 @@
       "publixPrice": 9.99,
       "traderJoesPrice": 9.99,
       "walmartPrice": 9.99
+    },
+    {
+      "id": "carrot",
+      "aldiPrice": 9,
+      "publixPrice": 8,
+      "traderJoesPrice": 7,
+      "walmartPrice": 6,
+      "imageUrl": ""
+    },
+    {
+      "id": "bread",
+      "aldiPrice": 8.03,
+      "publixPrice": 3.05,
+      "traderJoesPrice": 1,
+      "walmartPrice": 2,
+      "imageUrl": ""
     }
   ]
 }
