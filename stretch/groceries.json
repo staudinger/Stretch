@@ -31,6 +31,14 @@
       "traderJoesPrice": 1,
       "walmartPrice": 2,
       "imageUrl": ""
+    },
+    {
+      "id": "peanut butter",
+      "aldiPrice": 1,
+      "publixPrice": 1,
+      "traderJoesPrice": 1,
+      "walmartPrice": 1,
+      "imageUrl": ""
     }
   ]
 }
